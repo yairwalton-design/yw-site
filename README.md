@@ -15,7 +15,7 @@ you open is the file that ships.
 | File | What it is |
 |---|---|
 | `index.html` | The main page. All its text lives here. |
-| `press.html` | Bio, headshot, and topics, for editors and hosts. |
+| `press.html` | A press and speaking page. Finished, but deliberately NOT linked. See below. |
 | `subscribe.html` | Email signup for when a piece is published. Needs one setup step, below. |
 | `soon.html` | A coming soon splash. Not linked from anywhere. See below. |
 | `styles.css` | All the colors, fonts, and spacing. Edit this to change how it looks. |
@@ -45,6 +45,18 @@ git push
 ```
 
 Cloudflare rebuilds on its own within about a minute.
+
+---
+
+## The press page is parked
+
+`press.html` is written and works, but nothing links to it and it is not in the
+sitemap. A speaking page before anything is published signals more than the
+evidence supports, so it waits.
+
+To turn it on later: add `<a href="/press.html">Press</a>` back to the nav in
+`index.html` and `subscribe.html`, add it to `sitemap.xml`, and remove its
+`noindex` line.
 
 ---
 
@@ -88,8 +100,8 @@ preset **None**. There is nothing to build.
 Right now the site is deliberately invisible to search engines. When it is ready:
 
 1. Delete the `<meta name="robots" content="noindex, nofollow">` line from
-   `index.html`, `press.html` and `subscribe.html`. Leave it in `soon.html` and
-   `404.html`; neither should ever appear in search results.
+   `index.html` and `subscribe.html`. Leave it in `soon.html`, `404.html` and
+   `press.html`; none of those should appear in search results yet.
 2. Delete the two `Disallow` lines in `robots.txt`.
 
    Both are required. Either one on its own keeps the site out of search results.
