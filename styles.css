@@ -2,9 +2,9 @@
    Yair Walton, personal site
 
    Editorial layout: section labels sit in the left margin, the reading
-   column stays narrow. Palette and type follow the Belonging by Design
-   personal visual system, slate register. To move to the gold (Jewish
-   communal) register, swap the two accent values under :root.
+   column stays narrow. Palette and type follow Yair's personal visual
+   system, slate register. To move to the gold (Jewish communal) register,
+   swap the two accent values under :root.
 
    Fonts are self-hosted from assets/fonts, so the site keeps its
    typography with no third-party request and no tracking.
