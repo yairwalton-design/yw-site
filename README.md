@@ -112,12 +112,18 @@ Right now the site is deliberately invisible to search engines. When it is ready
 4. Paste the live URL into the LinkedIn Post Inspector to confirm the preview image
    appears, then into Google's Rich Results Test to confirm the profile data reads.
 5. Set up the email signup, above, and send yourself a test.
-6. Have June or Ann read the site before it is indexed. It names Jewish Family Service
-   and quotes the reach number, so it falls under the usual review.
+6. Decide whether this still needs June or Ann to read it. The linked pages no longer
+   name the employer or the program, so the usual review trigger does not apply on its
+   face. The reach number is still there, and `press.html` still names both, so it is
+   worth a look either way.
 
 ---
 
 ## Changing things
+
+**The disclaimer.** The footer now says "does not speak for my employer" rather than
+naming anyone. If you put the employer back on the page, put the name back in the
+disclaimer too.
 
 **The accent color.** Near the top of `styles.css`, under "Accent, slate register."
 The commented line below holds the gold values. Swap them to move from the civic
