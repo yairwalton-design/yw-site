@@ -50,6 +50,30 @@ Cloudflare rebuilds on its own within about a minute.
 
 ---
 
+## The email address must exist before you deploy
+
+The site now says **yair@yairwalton.com** everywhere. That address does not
+exist yet. Until you do the five minutes below, mail sent to it bounces and you
+never find out somebody tried.
+
+Cloudflare Email Routing is free and does not require paying for mail hosting.
+It forwards to the inbox you already read.
+
+1. Cloudflare dashboard, pick the `yairwalton.com` domain, then **Email**, then
+   **Email Routing**, then **Get started**.
+2. Cloudflare offers to add the DNS records for you. Let it.
+3. Create address: `yair@yairwalton.com`, forwarding to your Gmail.
+4. Gmail sends a verification link. Click it.
+5. Send yourself a test from a different account and confirm it lands.
+
+Optional, worth doing: in Gmail, Settings, Accounts, "Send mail as", add
+`yair@yairwalton.com` so replies go out from that address rather than your Gmail.
+
+If you decide not to do this, change the address back to your Gmail in
+`index.html`, `subscribe.html` and `soon.html` before deploying.
+
+---
+
 ## Analytics
 
 The site is set up for Cloudflare Web Analytics: cookieless, no personal data,
@@ -139,7 +163,8 @@ Right now the site is deliberately invisible to search engines. When it is ready
    appears, then into Google's Rich Results Test to confirm the profile data reads.
    Then add the site in Google Search Console, verify it, and submit
    `https://yairwalton.com/sitemap.xml`. Do the same at Bing Webmaster Tools.
-5. Set up the email signup, above, and send yourself a test.
+5. Confirm `yair@yairwalton.com` actually receives mail, above. Do this before
+   anyone sees the site, not after.
 6. Turn on analytics, above.
 7. Decide whether this still needs June or Ann to read it. The linked pages no longer
    name the employer or the program, so the usual review trigger does not apply on its
