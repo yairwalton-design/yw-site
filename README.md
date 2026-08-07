@@ -15,7 +15,6 @@ you open is the file that ships.
 | File | What it is |
 |---|---|
 | `index.html` | The main page. All its text lives here. |
-| `press.html` | A press and speaking page. Finished, but deliberately NOT linked. See below. |
 | `subscribe.html` | Email signup for when a piece is published. Needs one setup step, below. |
 | `soon.html` | A coming soon splash. Not linked from anywhere. See below. |
 | `styles.css` | All the colors, fonts, and spacing. Edit this to change how it looks. |
@@ -71,30 +70,35 @@ third-party requests.
 
 ---
 
-## The press page is parked
+## The press page is out of the folder, not lost
 
-`press.html` is written and works, but nothing links to it and it is not in the
-sitemap. A speaking page before anything is published signals more than the
-evidence supports, so it waits.
+`press.html` was written and finished, but it named the employer, the program and
+the award, all of which came off the rest of the site on purpose. Leaving it in
+the folder would have deployed it to `/press.html` for anyone with the URL.
 
-To turn it on later: add `<a href="/press.html">Press</a>` back to the nav in
-`index.html` and `subscribe.html`, add it to `sitemap.xml`, and remove its
-`noindex` line.
+It lives in git history. To bring it back:
+
+```bash
+git checkout abec079 -- press.html assets/headshot-studio-1000.webp assets/yair-walton-headshot.jpg
+```
+
+Then rewrite it to match whatever the site says at that point, and add it back to
+the nav and the sitemap.
 
 ---
 
-## The email signup needs five minutes of setup
+## The signup form is switched off on purpose
 
-`subscribe.html` posts to Buttondown, which is free up to 100 subscribers and does
-not track anyone. Until you set up the account, the form does nothing.
+`subscribe.html` currently asks people to email you, and that works today. The
+Buttondown form is written but commented out, because a form posting to an account
+that does not exist throws a 404 at whoever fills it in.
 
-1. Sign up at buttondown.com and pick a username.
-2. In `subscribe.html`, find `YOUR-USERNAME` in the form action and replace it with
-   the username you picked.
-3. Commit and push, then test the form yourself with your own address.
+To switch it on:
 
-The fallback line under the form tells people they can email you instead, so the
-page is still honest and usable before you do any of this.
+1. Sign up at buttondown.com, free up to 100 subscribers, and pick a username.
+2. In `subscribe.html` replace `YOUR-USERNAME` in the form action.
+3. Delete the comment markers around the `<form>` block.
+4. Push, then test it with your own address before telling anyone.
 
 ---
 
@@ -123,8 +127,7 @@ preset **None**. There is nothing to build.
 Right now the site is deliberately invisible to search engines. When it is ready:
 
 1. Delete the `<meta name="robots" content="noindex, nofollow">` line from
-   `index.html` and `subscribe.html`. Leave it in `soon.html`, `404.html` and
-   `press.html`; none of those should appear in search results yet.
+   `index.html` and `subscribe.html`. Leave it in `soon.html` and `404.html`.
 2. Delete the two `Disallow` lines in `robots.txt`.
 
    Both are required. Either one on its own keeps the site out of search results.
