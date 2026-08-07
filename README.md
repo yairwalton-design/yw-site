@@ -48,6 +48,26 @@ Cloudflare rebuilds on its own within about a minute.
 
 ---
 
+## Analytics
+
+The site is set up for Cloudflare Web Analytics: cookieless, no personal data,
+no cookie banner needed. It is **not on yet**. Pick one of these, never both,
+or every visit gets counted twice.
+
+**Easiest, no code.** In the Cloudflare dashboard open the Pages project, go to
+Settings, then Web Analytics, and click Enable. Cloudflare injects the tracking
+for you and nothing in these files changes.
+
+**In code.** Cloudflare dashboard, Web Analytics, Add a site, copy the token.
+In `index.html` and `subscribe.html` find the ANALYTICS comment block near the
+bottom of the head, paste the token over `YOUR-TOKEN-HERE`, and delete the
+`<!--` and `-->` around the script tag.
+
+Until you do one of these, the site runs zero JavaScript and makes zero
+third-party requests.
+
+---
+
 ## The press page is parked
 
 `press.html` is written and works, but nothing links to it and it is not in the
@@ -112,7 +132,8 @@ Right now the site is deliberately invisible to search engines. When it is ready
 4. Paste the live URL into the LinkedIn Post Inspector to confirm the preview image
    appears, then into Google's Rich Results Test to confirm the profile data reads.
 5. Set up the email signup, above, and send yourself a test.
-6. Decide whether this still needs June or Ann to read it. The linked pages no longer
+6. Turn on analytics, above.
+7. Decide whether this still needs June or Ann to read it. The linked pages no longer
    name the employer or the program, so the usual review trigger does not apply on its
    face. The reach number is still there, and `press.html` still names both, so it is
    worth a look either way.
@@ -120,6 +141,12 @@ Right now the site is deliberately invisible to search engines. When it is ready
 ---
 
 ## Changing things
+
+**Page weight.** The home page is about 290 KB on a first mobile visit, most of
+it the Newsreader typeface at 129 KB. Repeat visits are nearly free because the
+fonts are cached for a year. There is no CSP header, deliberately: it would
+block either the structured data or Cloudflare's analytics depending on how it
+was written.
 
 **The disclaimer.** The footer now says "does not speak for my employer" rather than
 naming anyone. If you put the employer back on the page, put the name back in the

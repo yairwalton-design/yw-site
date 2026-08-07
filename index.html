@@ -66,6 +66,25 @@
   "sameAs": ["https://www.linkedin.com/in/yairwalton/"]
 }
 </script>
+
+<!--
+  ANALYTICS. Two ways to turn this on. Use ONE, never both, or every visit
+  gets counted twice.
+
+  EASIEST, no code: in the Cloudflare dashboard open your Pages project,
+  go to Settings, then Web Analytics, and click Enable. Cloudflare injects
+  the beacon for you. Nothing here needs to change.
+
+  IN CODE: go to Cloudflare dashboard, Web Analytics, Add a site, copy the
+  token it gives you, paste it over YOUR-TOKEN-HERE below, and delete the
+  two comment markers around the script tag so it goes live.
+
+  Either way it is cookieless, collects no personal data, and needs no
+  cookie banner.
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "YOUR-TOKEN-HERE"}'></script>
+-->
 </head>
 <body>
 
