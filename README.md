@@ -14,7 +14,10 @@ you open is the file that ships.
 
 | File | What it is |
 |---|---|
-| `index.html` | All the text on the site. Edit this to change words. |
+| `index.html` | The main page. All its text lives here. |
+| `press.html` | Bio, headshot, and topics, for editors and hosts. |
+| `subscribe.html` | Email signup for when a piece is published. Needs one setup step, below. |
+| `soon.html` | A coming soon splash. Not linked from anywhere. See below. |
 | `styles.css` | All the colors, fonts, and spacing. Edit this to change how it looks. |
 | `404.html` | What someone sees at a URL that does not exist. |
 | `assets/` | Portrait in two sizes, the link preview image, and the fonts. |
@@ -45,6 +48,32 @@ Cloudflare rebuilds on its own within about a minute.
 
 ---
 
+## The email signup needs five minutes of setup
+
+`subscribe.html` posts to Buttondown, which is free up to 100 subscribers and does
+not track anyone. Until you set up the account, the form does nothing.
+
+1. Sign up at buttondown.com and pick a username.
+2. In `subscribe.html`, find `YOUR-USERNAME` in the form action and replace it with
+   the username you picked.
+3. Commit and push, then test the form yourself with your own address.
+
+The fallback line under the form tells people they can email you instead, so the
+page is still honest and usable before you do any of this.
+
+---
+
+## The coming soon splash
+
+`soon.html` is a stripped down holding page: the mark, your name, one sentence, and
+your email. Nothing links to it, so nobody will find it unless you send it to them.
+
+To make it the front door, rename `index.html` to something like `full.html` and
+rename `soon.html` to `index.html`. To undo it, swap them back. Only do this if you
+want the domain live before the rest is ready.
+
+---
+
 ## Cloudflare Pages setup
 
 Workers & Pages, then Create, then Pages, then Connect to Git, then pick `yw-site`.
@@ -58,15 +87,21 @@ preset **None**. There is nothing to build.
 
 Right now the site is deliberately invisible to search engines. When it is ready:
 
-1. Delete the `<meta name="robots" content="noindex, nofollow">` line in `index.html`.
+1. Delete the `<meta name="robots" content="noindex, nofollow">` line from
+   `index.html`, `press.html` and `subscribe.html`. Leave it in `soon.html` and
+   `404.html`; neither should ever appear in search results.
 2. Delete the two `Disallow` lines in `robots.txt`.
 
    Both are required. Either one on its own keeps the site out of search results.
-3. If the site is living somewhere other than `yairwalton.com`, update the domain in
-   four places: the `canonical` link, `og:url`, `og:image`, and `twitter:image` in
-   `index.html`, plus the two URLs in `robots.txt` and `sitemap.xml`.
+3. If the site is living somewhere other than `yairwalton.com`, update the domain
+   everywhere it appears: the `canonical`, `og:url`, `og:image` and `twitter:image`
+   tags in `index.html`, `press.html` and `subscribe.html`, plus `robots.txt` and
+   `sitemap.xml`. A find and replace across the folder catches all of them.
 4. Paste the live URL into the LinkedIn Post Inspector to confirm the preview image
    appears, then into Google's Rich Results Test to confirm the profile data reads.
+5. Set up the email signup, above, and send yourself a test.
+6. Have June or Ann read the site before it is indexed. It names Jewish Family Service
+   and quotes the reach number, so it falls under the usual review.
 
 ---
 
