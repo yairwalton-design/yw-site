@@ -1,10 +1,30 @@
-# The site is a work in progress and is closed to search engines.
-#
-# TO LAUNCH: delete the two Disallow lines below, and remove the
-# <meta name="robots" content="noindex, nofollow"> line from index.html.
-# Both have to change. Either one alone will keep the site out of search.
+# CLOSED. The site is a work in progress and no crawler should index it.
+# A named User-agent group overrides this wildcard one, so there are no
+# named groups here on purpose.
 
 User-agent: *
 Disallow: /
 
 Sitemap: https://yairwalton.com/sitemap.xml
+
+# ---------------------------------------------------------------------
+# TO LAUNCH: delete everything above except the Sitemap line, and paste
+# the block below in its place. Then remove the <meta name="robots">
+# line from index.html and subscribe.html. Both steps are required.
+#
+# Leaving the AI crawlers allowed is deliberate: it is how the site gets
+# quoted by assistants as well as found by search engines. To opt out of
+# that instead, give each of them "Disallow: /".
+#
+# User-agent: *
+# Allow: /
+#
+# User-agent: GPTBot
+# Allow: /
+#
+# User-agent: ClaudeBot
+# Allow: /
+#
+# User-agent: PerplexityBot
+# Allow: /
+# ---------------------------------------------------------------------

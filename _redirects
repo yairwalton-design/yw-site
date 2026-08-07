@@ -1,0 +1,3 @@
+# Send the www hostname to the bare domain so search engines only ever
+# see one address for the site. Cloudflare Pages applies this on deploy.
+https://www.yairwalton.com/* https://yairwalton.com/:splat 301!

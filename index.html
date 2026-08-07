@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Yair Walton</title>
-<meta name="description" content="Who notices when someone stops coming? Yair Walton builds things that do not exist yet, weaving together the people, systems, and networks that have to hold them up.">
+<meta name="description" content="Who notices when someone stops coming? Yair Walton builds things that do not exist yet, weaving together the people and systems that hold them up. Cincinnati, Ohio.">
 <meta name="author" content="Yair Walton">
 
 <!-- Off while the site is a work in progress. Remove BOTH this line and the
@@ -15,6 +15,7 @@
 <link rel="canonical" href="https://yairwalton.com/">
 
 <meta property="og:type" content="profile">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Yair Walton">
 <meta property="og:title" content="Yair Walton">
 <meta property="og:description" content="The answer is usually built into things nobody thinks of as belonging: who gets the invitation, who can physically get there, who owns the next handoff.">
@@ -32,7 +33,10 @@
 <meta name="theme-color" content="#F6F7F8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101823" media="(prefers-color-scheme: dark)">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><line x1='8' y1='16' x2='24' y2='16' stroke='%233D6480' stroke-width='2' stroke-linecap='round'/><circle cx='8' cy='16' r='4' fill='%23101823'/><circle cx='24' cy='16' r='3' fill='none' stroke='%233D6480' stroke-width='2'/></svg>">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
 
 <link rel="preload" href="assets/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/figtree-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -41,29 +45,77 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Yair Walton",
-  "url": "https://yairwalton.com/",
-  "image": "https://yairwalton.com/assets/share-card.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Cincinnati",
-    "addressRegion": "OH",
-    "addressCountry": "US"
-  },
-  "description": "Yair Walton builds things that do not exist yet, weaving together the people, systems, and networks that have to hold them up.",
-  "knowsAbout": [
-    "Belonging",
-    "Program operations",
-    "Social connection",
-    "Community health",
-    "Relationship centered care",
-    "Outcome measurement",
-    "Aging services",
-    "Volunteer engagement",
-    "Programme design"
-  ],
-  "sameAs": ["https://www.linkedin.com/in/yairwalton/"]
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://yairwalton.com/#yair",
+      "name": "Yair Walton",
+      "url": "https://yairwalton.com/",
+      "image": {
+        "@type": "ImageObject",
+        "@id": "https://yairwalton.com/#portrait",
+        "url": "https://yairwalton.com/assets/portrait-street-1600.webp",
+        "width": 1600,
+        "height": 2000,
+        "caption": "Yair Walton"
+      },
+      "description": "Yair Walton builds things that do not exist yet, weaving together the people, systems, and networks that have to hold them up.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cincinnati",
+        "addressRegion": "OH",
+        "addressCountry": "US"
+      },
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Cincinnati, Ohio"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Hebrew Union College"
+      },
+      "knowsAbout": [
+        "Belonging",
+        "Program operations",
+        "Social connection",
+        "Community health",
+        "Relationship centered care",
+        "Outcome measurement",
+        "Programme design",
+        "Volunteer engagement",
+        "Partnership development"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/yairwalton/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://yairwalton.com/#website",
+      "url": "https://yairwalton.com/",
+      "name": "Yair Walton",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://yairwalton.com/#yair"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://yairwalton.com/#page",
+      "url": "https://yairwalton.com/",
+      "name": "Yair Walton",
+      "isPartOf": {
+        "@id": "https://yairwalton.com/#website"
+      },
+      "about": {
+        "@id": "https://yairwalton.com/#yair"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://yairwalton.com/#portrait"
+      },
+      "inLanguage": "en-US"
+    }
+  ]
 }
 </script>
 

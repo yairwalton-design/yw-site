@@ -26,6 +26,9 @@ you open is the file that ships.
 | `robots.txt` | Tells search engines to stay out. Change this at launch. |
 | `sitemap.xml` | The page list search engines read after launch. |
 | `_headers` | Security and caching rules Cloudflare applies. You can ignore it. |
+| `_redirects` | Sends www to the bare domain so search sees one address. Ignore it. |
+| `favicon.ico`, `favicon.svg` | The tab icon. Google shows it beside mobile results. |
+| `site.webmanifest` | Name and icons for when someone saves the site to a phone. |
 
 ---
 
@@ -131,6 +134,8 @@ Right now the site is deliberately invisible to search engines. When it is ready
    `sitemap.xml`. A find and replace across the folder catches all of them.
 4. Paste the live URL into the LinkedIn Post Inspector to confirm the preview image
    appears, then into Google's Rich Results Test to confirm the profile data reads.
+   Then add the site in Google Search Console, verify it, and submit
+   `https://yairwalton.com/sitemap.xml`. Do the same at Bing Webmaster Tools.
 5. Set up the email signup, above, and send yourself a test.
 6. Turn on analytics, above.
 7. Decide whether this still needs June or Ann to read it. The linked pages no longer
