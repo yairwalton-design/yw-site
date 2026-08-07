@@ -1,0 +1,10 @@
+# The site is a work in progress and is closed to search engines.
+#
+# TO LAUNCH: delete the two Disallow lines below, and remove the
+# <meta name="robots" content="noindex, nofollow"> line from index.html.
+# Both have to change. Either one alone will keep the site out of search.
+
+User-agent: *
+Disallow: /
+
+Sitemap: https://yairwalton.com/sitemap.xml

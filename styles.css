@@ -1,10 +1,47 @@
 /* ==========================================================================
    Yair Walton, personal site
-   Editorial layout: section labels sit in the left margin, the reading column
-   stays narrow. Palette and type follow the Belonging by Design personal
-   visual system, slate register. To move to the gold (Jewish communal)
-   register, swap the two accent values below.
+
+   Editorial layout: section labels sit in the left margin, the reading
+   column stays narrow. Palette and type follow the Belonging by Design
+   personal visual system, slate register. To move to the gold (Jewish
+   communal) register, swap the two accent values under :root.
+
+   Fonts are self-hosted from assets/fonts, so the site keeps its
+   typography with no third-party request and no tracking.
    ========================================================================== */
+
+/* ------------------------------------------------------------------ fonts */
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url('assets/fonts/newsreader-var.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('assets/fonts/newsreader-italic-var.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Figtree';
+  src: url('assets/fonts/figtree-var.woff2') format('woff2-variations');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('assets/fonts/space-grotesk-var.woff2') format('woff2-variations');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ----------------------------------------------------------------- tokens */
 
 :root {
   --porcelain: #F6F7F8;
@@ -13,7 +50,9 @@
 
   --ink: #101823;
   --ink-2: #4C5563;
-  --ink-3: #7A8494;
+  /* #66707F, not a lighter grey: labels and the footer disclaimer are small
+     text and need 4.5:1. This clears it on both white and porcelain. */
+  --ink-3: #66707F;
 
   /* Accent, slate register */
   --accent: #3D6480;
@@ -25,6 +64,22 @@
   --measure: 60ch;
   --pad: clamp(1.25rem, 5vw, 4rem);
   --rail: 9rem;   /* width of the left label column */
+}
+
+/* Evening palette. Same system, reversed, per the brand's dark treatment. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --porcelain: #16202C;
+    --card: #101823;
+    --line: rgba(255, 255, 255, 0.14);
+
+    --ink: #FFFFFF;
+    --ink-2: rgba(255, 255, 255, 0.72);
+    --ink-3: rgba(255, 255, 255, 0.55);
+
+    --accent: #8EB6D0;
+    --accent-deep: #8EB6D0;
+  }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -53,17 +108,20 @@ a:hover { color: var(--ink); }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-.skip { position: absolute; left: -9999px; background: var(--ink); color: #fff; padding: 0.75rem 1rem; z-index: 10; }
+.skip { position: absolute; left: -9999px; background: var(--ink); color: var(--card); padding: 0.75rem 1rem; z-index: 10; }
 .skip:focus { left: 1rem; top: 1rem; }
 
 .wrap { max-width: 1080px; margin: 0 auto; }
 
 /* ---------------------------------------------------------------- labels */
 
+/* Section labels are real headings, so screen readers and search engines
+   can see the document structure. They are styled down, not sized up. */
 .kicker {
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 500;
   font-size: 0.6875rem;
+  line-height: 1.5;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -101,7 +159,7 @@ a:hover { color: var(--ink); }
 .mark .point-open { fill: none; stroke: var(--accent); stroke-width: 2; }
 
 .site-head nav { display: flex; gap: 1.75rem; font-size: 0.875rem; }
-.site-head nav a { text-decoration: none; color: var(--ink-2); }
+.site-head nav a { text-decoration: none; color: var(--ink-2); padding: 0.25rem 0; }
 .site-head nav a:hover { color: var(--ink); }
 
 /* --------------------------------------------------------------- opening */
@@ -212,6 +270,7 @@ blockquote p {
   gap: 0.35rem 2.25rem;
   font-size: 1.0625rem;
 }
+.links a { display: inline-block; padding: 0.25rem 0; }
 
 .routing {
   color: var(--ink-3);
@@ -236,8 +295,10 @@ blockquote p {
 
 @media (max-width: 860px) {
   .open-grid { grid-template-columns: 1fr; }
-  .portrait { order: -1; padding-top: 0; max-width: 300px; }
-  .open h1 { max-width: none; }
+
+  /* Headline first, portrait after. To lead with the photo on phones
+     instead, add: .portrait { order: -1; } */
+  .portrait { padding-top: 0; margin-top: 2rem; max-width: 300px; }
 
   /* Labels move above the text instead of into the margin. */
   .section-grid { grid-template-columns: 1fr; gap: 0.85rem; }

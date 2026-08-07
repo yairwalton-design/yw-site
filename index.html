@@ -3,24 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yair Walton</title>
-<meta name="description" content="Yair Walton is Senior Rabbi and Director of Program Operations and Strategy for K'vod Connect at Jewish Family Service of Cincinnati. He builds systems of belonging for people, institutions, and communities in transition.">
+
+<title>Yair Walton, Belonging by Design</title>
+<meta name="description" content="Belonging is an operating decision, not a feeling. Yair Walton is Senior Rabbi and Director of Program Operations and Strategy for K'vod Connect at Jewish Family Service of Cincinnati.">
 <meta name="author" content="Yair Walton">
+
+<!-- Off while the site is a work in progress. Remove BOTH this line and the
+     Disallow in robots.txt to let search engines in. See README. -->
 <meta name="robots" content="noindex, nofollow">
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yair Walton">
-<meta property="og:description" content="Building systems of belonging for people, institutions, and communities in transition.">
-<meta property="og:image" content="assets/portrait-street-1600.webp">
+<link rel="canonical" href="https://yairwalton.com/">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Yair Walton">
+<meta property="og:title" content="Yair Walton, Belonging by Design">
+<meta property="og:description" content="Belonging is an operating decision, not a feeling. It shows up in who gets the invitation, who can physically get there, who owns the next handoff, and whether anyone notices when a person stops coming.">
+<meta property="og:url" content="https://yairwalton.com/">
+<meta property="og:image" content="https://yairwalton.com/assets/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Yair Walton. Belonging is an operating decision, not a feeling.">
+
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yair Walton, Belonging by Design">
+<meta name="twitter:description" content="Belonging is an operating decision, not a feeling.">
+<meta name="twitter:image" content="https://yairwalton.com/assets/share-card.png">
+
+<meta name="theme-color" content="#F6F7F8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101823" media="(prefers-color-scheme: dark)">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><line x1='8' y1='16' x2='24' y2='16' stroke='%233D6480' stroke-width='2' stroke-linecap='round'/><circle cx='8' cy='16' r='4' fill='%23101823'/><circle cx='24' cy='16' r='3' fill='none' stroke='%233D6480' stroke-width='2'/></svg>">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Figtree:wght@400;600&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
-
+<link rel="preload" href="assets/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/figtree-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Yair Walton",
+  "url": "https://yairwalton.com/",
+  "image": "https://yairwalton.com/assets/share-card.png",
+  "jobTitle": "Senior Rabbi and Director of Program Operations and Strategy",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Jewish Family Service of Cincinnati"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cincinnati",
+    "addressRegion": "OH",
+    "addressCountry": "US"
+  },
+  "description": "Yair Walton works on the systems that decide whether someone stays visible to a community, and on the harder problem of measuring whether they do.",
+  "knowsAbout": [
+    "Belonging",
+    "Program operations",
+    "Social connection",
+    "Community health",
+    "Relationship centered care",
+    "Outcome measurement",
+    "Aging services",
+    "Volunteer engagement",
+    "Spiritual care"
+  ],
+  "sameAs": ["https://www.linkedin.com/in/yairwalton/"]
+}
+</script>
 </head>
 <body>
 
@@ -47,7 +97,7 @@
 <main id="main">
 
   <!-- Opening -->
-  <section class="open">
+  <section class="open" aria-label="Introduction">
     <div class="wrap open-grid">
       <div>
         <p class="kicker">Cincinnati, Ohio</p>
@@ -66,7 +116,7 @@
           src="assets/portrait-street-1600.webp"
           srcset="assets/portrait-street-800.webp 800w, assets/portrait-street-1600.webp 1600w"
           sizes="(max-width: 860px) 78vw, 34vw"
-          alt="Yair Walton"
+          alt="Yair Walton, standing on a tree lined street in Cincinnati"
           width="1600" height="2000"
           fetchpriority="high">
       </figure>
@@ -74,9 +124,9 @@
   </section>
 
   <!-- The work -->
-  <section class="section" id="work">
+  <section class="section" id="work" aria-labelledby="work-label">
     <div class="wrap section-grid">
-      <p class="kicker">The work</p>
+      <h2 class="kicker" id="work-label">The work</h2>
       <div class="prose">
         <p>
           Isolation gets talked about as something that happens to a person. Most of the
@@ -123,9 +173,9 @@
   </section>
 
   <!-- About -->
-  <section class="section" id="about">
+  <section class="section" id="about" aria-labelledby="about-label">
     <div class="wrap section-grid">
-      <p class="kicker">About</p>
+      <h2 class="kicker" id="about-label">About</h2>
       <div class="prose">
         <p>
           Yair Walton is Senior Rabbi and Director of Program Operations and Strategy
@@ -145,9 +195,9 @@
   </section>
 
   <!-- Reach me -->
-  <section class="section reach" id="reach">
+  <section class="section reach" id="reach" aria-labelledby="reach-label">
     <div class="wrap section-grid">
-      <p class="kicker">Reach me</p>
+      <h2 class="kicker" id="reach-label">Reach me</h2>
       <div class="prose">
         <p class="big">Email is best.</p>
         <ul class="links">
@@ -170,13 +220,9 @@
       This is a personal site. What's here is mine, and it doesn't speak for Jewish
       Family Service of Cincinnati.
     </p>
-    <p class="copy">&copy; <span id="year">2026</span> Yair Walton</p>
+    <p>&copy; Yair Walton</p>
   </div>
 </footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 
 </body>
 </html>

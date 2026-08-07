@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Share card source</title>
+<!--
+  Source for assets/share-card.png (1200x630), the image that appears when
+  the site is linked on LinkedIn, Slack, iMessage, or anywhere else.
+  To regenerate after an edit, screenshot this file at exactly 1200x630.
+-->
+<style>
+  @font-face { font-family:'Newsreader'; src:url('../assets/fonts/newsreader-var.woff2') format('woff2-variations'); font-weight:200 800; font-style:normal; }
+  @font-face { font-family:'Figtree'; src:url('../assets/fonts/figtree-var.woff2') format('woff2-variations'); font-weight:300 900; }
+  @font-face { font-family:'Space Grotesk'; src:url('../assets/fonts/space-grotesk-var.woff2') format('woff2-variations'); font-weight:300 700; }
+
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { width:1200px; height:630px; overflow:hidden; }
+  body { background:#F6F7F8; font-family:'Figtree',sans-serif; }
+
+  .card { display:flex; width:1200px; height:630px; }
+
+  .left { width:800px; height:630px; padding:74px 60px 64px 74px;
+          display:flex; flex-direction:column; justify-content:space-between; }
+
+  .mark { display:flex; align-items:center; gap:14px; }
+  .mark svg { width:56px; height:30px; }
+  .mark span { font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:.02em; color:#101823; }
+
+  h1 { font-family:'Newsreader',Georgia,serif; font-weight:300; font-size:60px; line-height:1.1;
+       letter-spacing:-.02em; color:#101823; max-width:16ch; }
+
+  .foot { font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:15px;
+          letter-spacing:.11em; text-transform:uppercase; color:#7A8494; }
+
+  .right { width:400px; height:630px; position:relative; overflow:hidden; }
+  .right img { width:400px; height:630px; object-fit:cover; object-position:50% 20%; }
+  .right::after { content:''; position:absolute; top:0; bottom:0; left:0; width:80px;
+                  background:linear-gradient(to right,#F6F7F8,rgba(246,247,248,0)); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="left">
+      <div class="mark">
+        <svg viewBox="0 0 44 24" aria-hidden="true">
+          <line x1="10" y1="12" x2="34" y2="12" stroke="#101823" stroke-width="1.6"></line>
+          <circle cx="10" cy="12" r="5" fill="#101823"></circle>
+          <circle cx="34" cy="12" r="3.5" fill="none" stroke="#3D6480" stroke-width="2"></circle>
+        </svg>
+        <span>Yair Walton</span>
+      </div>
+      <h1>Belonging is an operating decision, not a feeling.</h1>
+      <p class="foot">Cincinnati, Ohio</p>
+    </div>
+    <div class="right">
+      <img src="../assets/portrait-street-1600.webp" alt="">
+    </div>
+  </div>
+</body>
+</html>
