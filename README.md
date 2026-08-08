@@ -22,7 +22,7 @@ you open is the file that ships.
 | `assets/` | Portrait in two sizes, the link preview image, and the fonts. |
 | `assets/fonts/` | The four typefaces, served from this site rather than from Google. |
 | `tools/share-card.html` | Source for the link preview image. See below. |
-| `robots.txt` | Tells search engines to stay out. Change this at launch. |
+| `robots.txt` | Tells search engines they are welcome, including AI crawlers. |
 | `sitemap.xml` | The page list search engines read after launch. |
 | `_headers` | Security and caching rules Cloudflare applies. You can ignore it. |
 | `_redirects` | Sends www to the bare domain so search sees one address. Ignore it. |
@@ -148,28 +148,34 @@ preset **None**. There is nothing to build.
 
 ## Launch checklist
 
-Right now the site is deliberately invisible to search engines. When it is ready:
+The site is **open to search engines**. `robots.txt` allows everyone including
+the AI crawlers, and `index.html` and `subscribe.html` ask to be indexed with
+large image previews. `soon.html` and `404.html` stay out of search on purpose.
 
-1. Delete the `<meta name="robots" content="noindex, nofollow">` line from
-   `index.html` and `subscribe.html`. Leave it in `soon.html` and `404.html`.
-2. Delete the two `Disallow` lines in `robots.txt`.
+Before anyone sees it:
 
-   Both are required. Either one on its own keeps the site out of search results.
-3. If the site is living somewhere other than `yairwalton.com`, update the domain
-   everywhere it appears: the `canonical`, `og:url`, `og:image` and `twitter:image`
-   tags in `index.html`, `press.html` and `subscribe.html`, plus `robots.txt` and
-   `sitemap.xml`. A find and replace across the folder catches all of them.
-4. Paste the live URL into the LinkedIn Post Inspector to confirm the preview image
-   appears, then into Google's Rich Results Test to confirm the profile data reads.
-   Then add the site in Google Search Console, verify it, and submit
-   `https://yairwalton.com/sitemap.xml`. Do the same at Bing Webmaster Tools.
-5. Confirm `yair@yairwalton.com` actually receives mail, above. Do this before
-   anyone sees the site, not after.
-6. Turn on analytics, above.
-7. Decide whether this still needs June or Ann to read it. The linked pages no longer
-   name the employer or the program, so the usual review trigger does not apply on its
-   face. The reach number is still there, and `press.html` still names both, so it is
-   worth a look either way.
+1. Confirm `yair@yairwalton.com` actually receives mail. It is the only contact
+   on the site. Steps are above. Do this first.
+2. Deploy: Workers & Pages, Create, Pages, Connect to Git, pick `yw-site`. Build
+   command empty, output directory empty, framework preset None.
+3. Add `yairwalton.com` as a custom domain on the Pages project. If the site
+   lives anywhere else instead, find and replace `https://yairwalton.com`
+   across the folder first, or every canonical, preview image and schema ID
+   points at the wrong place.
+4. Turn on analytics. One click in Pages settings, or paste a token. Not both.
+5. Paste the live URL into the LinkedIn Post Inspector and confirm the preview
+   image appears. Then Google's Rich Results Test to confirm the profile data
+   reads.
+6. Add the site in Google Search Console, verify it, submit
+   `https://yairwalton.com/sitemap.xml`. Same at Bing Webmaster Tools.
+7. Put the URL in your LinkedIn profile. Inbound links are most of how a new
+   site gets found, and that is the strongest one you control.
+8. Decide whether June or Ann should read it first. The pages no longer name
+   the employer or the program, so the usual trigger does not apply on its
+   face, but the 1,300 figure is still there.
+
+Expect nothing for a few days. A new domain with no inbound links usually takes
+somewhere between a few days and a few weeks to appear, even for your own name.
 
 ---
 
