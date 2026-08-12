@@ -1,0 +1,49 @@
+# Yair Walton
+
+> Yair Walton builds community programs and the operating systems underneath
+> them, and works on the harder problem of measuring whether they reach the
+> people they are meant to reach. Based in Cincinnati, Ohio.
+
+## Who he is
+
+Yair Walton builds things that do not exist yet. He works on the human side and
+the systems side at once, and spends most of his time getting people, technology,
+and institutions to hold up something none of them could hold up alone.
+
+He has worked with communities in Ukraine, Costa Rica, Argentina, Lithuania, and
+Israel. He now works in Cincinnati, where he directs a program working against
+isolation among older adults that has reached more than 1,300 people since 2020.
+
+He designed an engagement scoring model when attendance stopped answering the
+question, and he and his colleagues built evaluation infrastructure in Salesforce
+connecting participant data to outcomes. An independent three year evaluation
+found reduced isolation and improved access to resources.
+
+He was ordained at Hebrew Union College in 2021. He lives in Cincinnati with his
+wife and their young daughter.
+
+## The idea he works on
+
+Belonging is not a feeling that happens to people. It shows up in who gets the
+invitation, who can physically get there, who owns the next handoff, and whether
+anyone notices when a person stops coming. Those are design decisions, and
+decisions can be made differently.
+
+Counting attendance is easy. The harder question is who is showing up, who is
+missing, and whether a person who looks connected on paper actually is. A number
+can be technically correct and still answer the wrong question.
+
+## Pages
+
+- [Home](https://yairwalton.com/): who he is, what he works on, how to reach him
+- [Subscribe](https://yairwalton.com/subscribe.html): an email when a new piece is published
+
+## Contact
+
+yair@yairwalton.com
+
+## Notes
+
+This is a personal site. What is on it is his own and does not speak for his
+employer. Longer written pieces on program design and measurement are in progress
+and will be linked here when published.
