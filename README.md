@@ -172,7 +172,7 @@ Before anyone sees it:
    site gets found, and that is the strongest one you control.
 8. Decide whether June or Ann should read it first. The pages no longer name
    the employer or the program, so the usual trigger does not apply on its
-   face, but the 1,300 figure is still there.
+   face, but the reach figure is still there.
 
 Expect nothing for a few days. A new domain with no inbound links usually takes
 somewhere between a few days and a few weeks to appear, even for your own name.
