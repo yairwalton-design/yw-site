@@ -12,8 +12,7 @@ and institutions to hold up something none of them could hold up alone.
 
 He has worked with communities in Ukraine, Costa Rica, Argentina, Lithuania, and
 Israel. He now works in Cincinnati, where he directs a program working against
-isolation among older adults that has reached more than 1,200 people since it
-launched in early 2021.
+isolation among older adults that has reached more than 1,200 people since 2020.
 
 He designed an engagement scoring model when attendance stopped answering the
 question, and he and his colleagues built evaluation infrastructure in Salesforce
