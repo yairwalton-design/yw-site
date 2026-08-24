@@ -27,9 +27,12 @@
 # itself, per RFC 8288, so an agent finds them without parsing any HTML.
 /
   Link: </index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="alternate"; type="text/plain"
+  Vary: Accept
 
 /index.html
   Link: </index.md>; rel="alternate"; type="text/markdown"
+  Vary: Accept
 
 /subscribe.html
   Link: </subscribe.md>; rel="alternate"; type="text/markdown"
+  Vary: Accept

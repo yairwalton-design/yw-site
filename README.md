@@ -25,6 +25,9 @@ you open is the file that ships.
 | `robots.txt` | Tells search engines they are welcome, including AI crawlers. |
 | `sitemap.xml` | The page list search engines read after launch. |
 | `BingSiteAuth.xml` | Bing ownership proof. Must stay at the root forever. |
+| `llms.txt` | A plain text summary of the site for AI assistants. |
+| `index.md`, `subscribe.md` | Markdown twins of the two pages, for AI agents. |
+| `functions/_middleware.js` | Serves the markdown when an agent asks for it. |
 | `_headers` | Security and caching rules Cloudflare applies. You can ignore it. |
 | `_redirects` | Sends www to the bare domain so search sees one address. Ignore it. |
 | `favicon.ico`, `favicon.svg` | The tab icon. Google shows it beside mobile results. |
@@ -223,6 +226,34 @@ gets posted to LinkedIn or pasted into a message. To change it, edit
 `tools/share-card.html` and screenshot it at exactly 1200 by 630.
 
 ---
+
+## Reading the site as an agent would
+
+Three ways in, in order of how much they save:
+
+```bash
+curl -H "Accept: text/markdown" https://yairwalton.com/   # negotiated
+curl https://yairwalton.com/index.md                      # direct
+curl https://yairwalton.com/llms.txt                      # site summary
+```
+
+`index.md` is about 2 KB against 10 KB of HTML, so an assistant reading the
+markdown spends roughly a fifth of the tokens and is likelier to take in the
+whole page rather than a truncated slice of markup.
+
+**The markdown is maintained by hand.** There is no build step. If you change a
+sentence in `index.html`, change it in `index.md` and `llms.txt` too, or agents
+will quote a stale version of you. This is the one real maintenance cost of the
+setup.
+
+`functions/_middleware.js` does the negotiation. It is written to fail open:
+anything unexpected falls through to the normal site. Deleting the file is a
+safe rollback, and costs only the negotiated path; the `.md` URLs keep working.
+
+`robots.txt` carries a `Content-Signal` line declaring `search=yes`,
+`ai-input=yes` and `ai-train=yes`. The first two are what get you found and
+quoted accurately. `ai-train` permits use as model training data, which is a
+values call rather than a technical one. Change it to `no` to withdraw it.
 
 ## Notes
 
