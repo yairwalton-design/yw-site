@@ -276,9 +276,23 @@ tools/       the share card generator. never served.
 README.md    this file. never served.
 ```
 
-The Pages project's **build output directory must be set to `public`**. If it is
-empty, Pages serves the repo root instead, the site 404s, and this README goes
-public again. That one setting is the whole safety property.
+The Pages project's **Build output directory must be set to `public`**. If it is
+empty or `/`, Pages serves the repo root instead, the site 404s, and this README
+goes public again. That one setting is the whole safety property.
+
+Settings, Builds, Build configuration:
+
+| Field | Value | Why |
+|---|---|---|
+| Framework preset | None | nothing to build |
+| Build command | empty | nothing to build |
+| **Build output directory** | `public` | the folder whose contents get served |
+| **Root directory** | **empty** | where Pages looks for `functions/` |
+
+Do not put `public` in Root directory. The two fields sit together and sound
+interchangeable, but Root directory moves where Pages looks for `functions/`, so
+it would search `public/functions/`, find no middleware, and look for the output
+at `public/public/`. The site breaks and the error points nowhere near the cause.
 
 ## How this used to leak
 
