@@ -1,8 +1,19 @@
 # Open. Everything here is meant to be found.
 #
-# The AI crawlers are allowed on purpose: it is how the site gets quoted by
-# assistants as well as listed by search engines. To opt out of that later,
-# give each of them "Disallow: /" instead of "Allow: /".
+# This file is APPENDED to a Cloudflare managed block, above. Cloudflare's
+# AI Crawl Control writes that block and disallows the AI training crawlers:
+# GPTBot, ClaudeBot, CCBot, Google-Extended, Applebot-Extended, Bytespider,
+# Amazonbot, meta-externalagent. That enforces the ai-train=no signal below
+# rather than only declaring it.
+#
+# So do not add Allow groups here for any bot Cloudflare disallows. Two groups
+# for the same user-agent merge into one with conflicting rules, and which rule
+# wins is down to the individual crawler. Nothing in this file should argue with
+# the block above it.
+#
+# Search and answer-time crawlers stay allowed, which is where the visibility
+# is: Googlebot, Bingbot, PerplexityBot, and the user-initiated fetchers that
+# OpenAI and Anthropic use when somebody actually asks about Yair.
 #
 # The Content-Signal line states what AI may do with this content, per
 # contentsignals.org.
@@ -13,8 +24,7 @@
 #
 # The signal is repeated in every group on purpose. A crawler that matches a
 # named group ignores the * group completely, so a signal written only under *
-# would never reach GPTBot or ClaudeBot, which are the ones it is aimed at.
-# If you change it, change it everywhere; the check below counts them.
+# would never reach the named bots.
 #
 # ai-train is off deliberately. Permitting it would gain a site this size
 # essentially nothing, and it is the only one of the three that cannot be
@@ -32,14 +42,6 @@ Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: Bingbot
-Allow: /
-Content-Signal: search=yes, ai-input=yes, ai-train=no
-
-User-agent: GPTBot
-Allow: /
-Content-Signal: search=yes, ai-input=yes, ai-train=no
-
-User-agent: ClaudeBot
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 

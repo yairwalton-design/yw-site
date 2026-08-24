@@ -262,10 +262,33 @@ checks that the line exists and not what it says. And it is a declared
 preference honored voluntarily, like `robots.txt` itself, so it binds
 well-behaved crawlers and not others.
 
-**The line is repeated in all six groups on purpose.** A crawler that matches a
+**The line is repeated in every group on purpose.** A crawler that matches a
 named group ignores the `*` group completely, so a signal written only under `*`
-would never reach GPTBot or ClaudeBot, the crawlers it is aimed at. If you change
-it, change it in every group.
+would never reach the named bots. If you change it, change it in every group.
+
+### Cloudflare rewrites this file at the edge
+
+What the site serves is not what is in this repo. Cloudflare's **AI Crawl
+Control** prepends a managed block, then appends `public/robots.txt`. Check the
+real thing at `https://yairwalton.com/robots.txt`, never the repo copy.
+
+The managed block disallows the AI training crawlers: GPTBot, ClaudeBot, CCBot,
+Google-Extended, Applebot-Extended, Bytespider, Amazonbot, meta-externalagent.
+That enforces `ai-train=no` instead of only declaring it. Googlebot, Bingbot and
+PerplexityBot stay allowed, along with the user-initiated fetchers OpenAI and
+Anthropic use when someone actually asks about Yair, so search visibility and
+being quoted are unaffected.
+
+It also adds the EU Directive 2019/790 Article 4 rights reservation, which gives
+the training opt-out actual legal footing.
+
+**Never add an Allow group here for a bot that block disallows.** Two groups for
+the same user-agent merge into one carrying both rules, and which one wins is
+down to the individual crawler. This file had exactly that bug: `Allow: /` groups
+for GPTBot and ClaudeBot, left over from when `ai-train` was yes, arguing with
+Cloudflare's `Disallow: /`. Removed.
+
+To change what is blocked, use the AI Crawl Control dashboard, not this file.
 
 ## Layout
 
