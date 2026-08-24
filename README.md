@@ -24,6 +24,7 @@ you open is the file that ships.
 | `tools/share-card.html` | Source for the link preview image. See below. |
 | `robots.txt` | Tells search engines they are welcome, including AI crawlers. |
 | `sitemap.xml` | The page list search engines read after launch. |
+| `BingSiteAuth.xml` | Bing ownership proof. Must stay at the root forever. |
 | `_headers` | Security and caching rules Cloudflare applies. You can ignore it. |
 | `_redirects` | Sends www to the bare domain so search sees one address. Ignore it. |
 | `favicon.ico`, `favicon.svg` | The tab icon. Google shows it beside mobile results. |
@@ -172,6 +173,13 @@ Still open:
 
 - [ ] Submit `https://yairwalton.com/sitemap.xml` in Search Console, and again
       at Bing Webmaster Tools.
+- [ ] Finish Bing verification. Both proofs are deployed: `BingSiteAuth.xml` at
+      the root, and an `msvalidate.01` meta tag in the `index.html` head. Neither
+      may ever be deleted, or Bing silently unverifies the site. If Bing still
+      fails, it is fetching the `www` hostname, which `_redirects` 301s to the
+      bare domain. Use Bing's CNAME method instead: name
+      `14536cdafd9c4cc6ae01adc80bce385b`, value `verify.bing.com`. DNS has no
+      hostname redirect to trip over.
 - [ ] Hit **Validate Fix** on the Search Console `mainEntity` error. The schema
       correction has been live for a while and should clear.
 - [ ] Re-run the **LinkedIn Post Inspector**. Both photos were replaced on
