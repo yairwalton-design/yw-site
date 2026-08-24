@@ -267,7 +267,34 @@ named group ignores the `*` group completely, so a signal written only under `*`
 would never reach GPTBot or ClaudeBot, the crawlers it is aimed at. If you change
 it, change it in every group.
 
-## Repo files are uploaded with the site
+## Layout
+
+```
+public/      the site. everything in here is served.
+functions/   the markdown negotiation. must stay at the repo root.
+tools/       the share card generator. never served.
+README.md    this file. never served.
+```
+
+The Pages project's **Build output directory must be set to `public`**. If it is
+empty or `/`, Pages serves the repo root instead, the site 404s, and this README
+goes public again. That one setting is the whole safety property.
+
+Settings, Builds, Build configuration:
+
+| Field | Value | Why |
+|---|---|---|
+| Framework preset | None | nothing to build |
+| Build command | empty | nothing to build |
+| **Build output directory** | `public` | the folder whose contents get served |
+| **Root directory** | **empty** | where Pages looks for `functions/` |
+
+Do not put `public` in Root directory. The two fields sit together and sound
+interchangeable, but Root directory moves where Pages looks for `functions/`, so
+it would search `public/functions/`, find no middleware, and look for the output
+at `public/public/`. The site breaks and the error points nowhere near the cause.
+
+## How this used to leak
 
 The Pages project has an empty build output directory, which makes the repo root
 the site. Every file here is uploaded, including this README and `tools/`.
@@ -282,33 +309,20 @@ Two layers currently stop them being read:
 Both are blocks in front of files that are still on the CDN. Delete the
 middleware and they are readable again.
 
-### The permanent fix
+This was fixed by moving the site into `public/`. Before that the build output
+directory was empty, which made the repo root the site, so every file in the repo
+was uploaded and `https://yairwalton.com/README.md` was readable by anyone with
+the URL. It had carried colleague names and notes about what was kept off the
+page and why. Those were removed, and then the structure was changed so the
+question cannot come back.
 
-Move the site into its own directory and point the build at it. Then repo files
-are never uploaded at all, and nothing depends on a rule staying in place.
+The middleware still returns 404 for `/README.md`, `/tools/*` and `/functions/*`.
+With the new layout nothing is behind those rules, so they are now belt and
+braces rather than the actual protection. Harmless to keep.
 
-Order matters, and done in this order there is no downtime:
-
-1. **In the Cloudflare dashboard first.** Pages project, Settings, Builds,
-   set **Build output directory** to `public`. The next build fails, because
-   `public/` does not exist yet. A failed build changes nothing: the previous
-   deployment stays live.
-2. **Then move the files.** Everything the site serves goes into `public/`:
-   the HTML, `styles.css`, `assets/`, `robots.txt`, `sitemap.xml`, `llms.txt`,
-   the `.md` twins, the icons, `BingSiteAuth.xml`, `_headers`, `_redirects`.
-3. **Leave `functions/` at the repo root.** Pages looks for it beside the output
-   directory, not inside it. Moving it breaks the markdown negotiation.
-4. Push. The build now succeeds and serves from `public/`.
-5. Confirm `https://yairwalton.com/README.md` returns 404 and the site loads.
-   Then the middleware's `NOT_THE_SITE` block can be deleted, though leaving it
-   costs nothing.
-
-Doing step 2 before step 1 takes the site down, because the root would have no
-`index.html` to serve.
-
-**Until that is done, keep this file free of anything you would not put on the
-site.** No colleague names, no internal review notes, no reasoning about what was
-left off the page and why. Operational instructions only.
+**Still worth the habit:** this file is one dashboard setting away from being
+public again. Keep it to operational instructions. No colleague names, no
+internal review notes, no reasoning about what was left off the page.
 
 ## Notes
 
