@@ -267,19 +267,48 @@ named group ignores the `*` group completely, so a signal written only under `*`
 would never reach GPTBot or ClaudeBot, the crawlers it is aimed at. If you change
 it, change it in every group.
 
-## This file is on the live site
+## Repo files are uploaded with the site
 
 The Pages project has an empty build output directory, which makes the repo root
-the site. Everything here deploys, including this README, at
-`https://yairwalton.com/README.md`, and `tools/` alongside it.
+the site. Every file here is uploaded, including this README and `tools/`.
 
-`_headers` marks both `noindex` so they stay out of search results. That stops
-them being findable, not being readable: anyone with the URL can open them.
+Two layers currently stop them being read:
 
-**So keep this file free of anything you would not put on the site.** No
-colleague names, no internal review notes, no reasoning about what was left off
-the page and why. Operational instructions only. Anything genuinely private
-belongs somewhere that is not this repo.
+1. `functions/_middleware.js` returns 404 for `/README.md`, `/tools/*` and
+   `/functions/*`. Verified against 13 paths, including near misses like
+   `/toolsmith.html` and `/README.markdown`, which must still resolve normally.
+2. `_headers` marks them `noindex` so they stay out of search results.
+
+Both are blocks in front of files that are still on the CDN. Delete the
+middleware and they are readable again.
+
+### The permanent fix
+
+Move the site into its own directory and point the build at it. Then repo files
+are never uploaded at all, and nothing depends on a rule staying in place.
+
+Order matters, and done in this order there is no downtime:
+
+1. **In the Cloudflare dashboard first.** Pages project, Settings, Builds,
+   set **Build output directory** to `public`. The next build fails, because
+   `public/` does not exist yet. A failed build changes nothing: the previous
+   deployment stays live.
+2. **Then move the files.** Everything the site serves goes into `public/`:
+   the HTML, `styles.css`, `assets/`, `robots.txt`, `sitemap.xml`, `llms.txt`,
+   the `.md` twins, the icons, `BingSiteAuth.xml`, `_headers`, `_redirects`.
+3. **Leave `functions/` at the repo root.** Pages looks for it beside the output
+   directory, not inside it. Moving it breaks the markdown negotiation.
+4. Push. The build now succeeds and serves from `public/`.
+5. Confirm `https://yairwalton.com/README.md` returns 404 and the site loads.
+   Then the middleware's `NOT_THE_SITE` block can be deleted, though leaving it
+   costs nothing.
+
+Doing step 2 before step 1 takes the site down, because the root would have no
+`index.html` to serve.
+
+**Until that is done, keep this file free of anything you would not put on the
+site.** No colleague names, no internal review notes, no reasoning about what was
+left off the page and why. Operational instructions only.
 
 ## Notes
 

@@ -8,6 +8,12 @@
 // through to next(), which serves the normal site. If this file is deleted
 // the site keeps working exactly as it does now, minus the negotiation.
 
+// Repo files that are not part of the site. The Pages build output directory
+// is the repo root, so these upload with everything else. Serve 404 for them
+// rather than the file. See the README for the permanent fix, which is to move
+// the site into its own directory and point the build at that instead.
+const NOT_THE_SITE = [/^\/README\.md$/i, /^\/tools(\/|$)/i, /^\/functions(\/|$)/i];
+
 const MARKDOWN_FOR = {
   "/": "/index.md",
   "/index.html": "/index.md",
@@ -18,6 +24,15 @@ export async function onRequest(context) {
   const { request, next } = context;
 
   try {
+    const path = new URL(request.url).pathname;
+    if (NOT_THE_SITE.some((re) => re.test(path))) {
+      return new Response("Not found\n", {
+        status: 404,
+        headers: { "content-type": "text/plain; charset=utf-8",
+                   "x-robots-tag": "noindex, nofollow" },
+      });
+    }
+
     if (request.method !== "GET" && request.method !== "HEAD") return next();
 
     const accept = request.headers.get("accept") || "";
