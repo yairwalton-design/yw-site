@@ -3,9 +3,18 @@
 # The AI crawlers are allowed on purpose: it is how the site gets quoted by
 # assistants as well as listed by search engines. To opt out of that later,
 # give each of them "Disallow: /" instead of "Allow: /".
+#
+# The Content-Signal line states what AI may do with this content, per
+# contentsignals.org. All three are yes, which is the point of a personal
+# site: be found, be quoted, be understood. Change any of them to "no" to
+# withdraw that permission.
+#   search    appear in search results
+#   ai-input  be read at answer time, so assistants quote the real text
+#   ai-train  be used as model training data
 
 User-agent: *
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 User-agent: Googlebot
 Allow: /

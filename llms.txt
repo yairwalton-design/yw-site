@@ -35,8 +35,11 @@ can be technically correct and still answer the wrong question.
 
 ## Pages
 
-- [Home](https://yairwalton.com/): who he is, what he works on, how to reach him
-- [Subscribe](https://yairwalton.com/subscribe.html): an email when a new piece is published
+Markdown versions are linked first. They carry the same text as the HTML at
+roughly a fifth of the size.
+
+- [Home](https://yairwalton.com/index.md): who he is, what he works on, how to reach him. HTML at https://yairwalton.com/
+- [Subscribe](https://yairwalton.com/subscribe.md): an email when a new piece is published. HTML at https://yairwalton.com/subscribe.html
 
 ## Contact
 

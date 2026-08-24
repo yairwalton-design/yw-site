@@ -11,3 +11,25 @@
 
 /assets/*
   Cache-Control: public, max-age=604800
+
+# Markdown twins of the pages, for AI agents. index.md is about a fifth the
+# size of index.html, so an assistant reading it spends far fewer tokens and
+# is more likely to take in the whole thing.
+/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/subscribe.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# Advertise the markdown version and the site summary in the HTTP response
+# itself, per RFC 8288, so an agent finds them without parsing any HTML.
+/
+  Link: </index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="alternate"; type="text/plain"
+
+/index.html
+  Link: </index.md>; rel="alternate"; type="text/markdown"
+
+/subscribe.html
+  Link: </subscribe.md>; rel="alternate"; type="text/markdown"
