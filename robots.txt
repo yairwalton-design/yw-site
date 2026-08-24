@@ -5,30 +5,46 @@
 # give each of them "Disallow: /" instead of "Allow: /".
 #
 # The Content-Signal line states what AI may do with this content, per
-# contentsignals.org. All three are yes, which is the point of a personal
-# site: be found, be quoted, be understood. Change any of them to "no" to
-# withdraw that permission.
-#   search    appear in search results
-#   ai-input  be read at answer time, so assistants quote the real text
-#   ai-train  be used as model training data
+# contentsignals.org.
+#   search    yes. Appear in search results.
+#   ai-input  yes. Be read at answer time, so assistants quote the real
+#             words rather than guessing. This is where the benefit is.
+#   ai-train  no. Not for use as model training data.
+#
+# The signal is repeated in every group on purpose. A crawler that matches a
+# named group ignores the * group completely, so a signal written only under *
+# would never reach GPTBot or ClaudeBot, which are the ones it is aimed at.
+# If you change it, change it everywhere; the check below counts them.
+#
+# ai-train is off deliberately. Permitting it would gain a site this size
+# essentially nothing, and it is the only one of the three that cannot be
+# taken back later: a signal can be changed, but text already absorbed into
+# a trained model stays absorbed. The essays are coming, and this keeps that
+# decision open. Visibility is unaffected, since search and ai-input carry
+# all of it.
 
 User-agent: *
 Allow: /
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: Googlebot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: Bingbot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: GPTBot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: ClaudeBot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: PerplexityBot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 Sitemap: https://yairwalton.com/sitemap.xml

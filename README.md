@@ -250,10 +250,26 @@ setup.
 anything unexpected falls through to the normal site. Deleting the file is a
 safe rollback, and costs only the negotiated path; the `.md` URLs keep working.
 
-`robots.txt` carries a `Content-Signal` line declaring `search=yes`,
-`ai-input=yes` and `ai-train=yes`. The first two are what get you found and
-quoted accurately. `ai-train` permits use as model training data, which is a
-values call rather than a technical one. Change it to `no` to withdraw it.
+`robots.txt` carries a `Content-Signal` line: `search=yes, ai-input=yes,
+ai-train=no`.
+
+The first two are what get you found and quoted accurately, and they carry all
+of the visibility. `ai-train=no` withholds permission to use the text as model
+training data. It is off because permitting it would gain a site this size
+essentially nothing, and it is the only one of the three that cannot be undone:
+a signal can be changed later, but text already absorbed into a trained model
+stays absorbed. That matters more once the essays are up than it does for a bio
+paragraph, which is the point of settling it now.
+
+Two things it does not do. It does not affect the Agent Readiness score, which
+checks that the line exists and not what it says. And it is a declared
+preference honored voluntarily, like `robots.txt` itself, so it binds
+well-behaved crawlers and not others.
+
+**The line is repeated in all six groups on purpose.** A crawler that matches a
+named group ignores the `*` group completely, so a signal written only under `*`
+would never reach GPTBot or ClaudeBot, the crawlers it is aimed at. If you change
+it, change it in every group.
 
 ## Notes
 
