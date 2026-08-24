@@ -104,20 +104,16 @@ no backfill, so the data starts from when it was switched on, not from launch.
 
 ---
 
-## The press page is out of the folder, not lost
+## The press page is in git history, not in the folder
 
-`press.html` was written and finished, but it named the employer, the program and
-the award, all of which came off the rest of the site on purpose. Leaving it in
-the folder would have deployed it to `/press.html` for anyone with the URL.
+A press page was written and finished, then taken out of the deployable folder
+because its copy no longer matched the rest of the site. Any file left in the
+folder deploys, whether or not anything links to it.
 
-It lives in git history. To bring it back:
-
-```bash
-git checkout abec079 -- press.html assets/headshot-studio-1000.webp assets/yair-walton-headshot.jpg
-```
-
-Then rewrite it to match whatever the site says at that point, and add it back to
-the nav and the sitemap.
+It is recoverable from git history. Find it with `git log --diff-filter=D
+--name-only`, restore it with `git checkout <commit> -- <files>`, then rewrite it
+to match whatever the site says at that point and add it back to the nav and the
+sitemap.
 
 ---
 
@@ -189,9 +185,9 @@ Still open:
       2026-08-24, and LinkedIn caches preview cards hard, so anyone you send the
       link to still gets the old card until you refresh it.
 - [ ] Review DMARC reports in two to four weeks before tightening `p=none`.
-- [ ] Decide whether June or Ann should read it. The pages no longer name the
-      employer or the program, so the usual trigger does not apply on its face,
-      but the reach figure is still there.
+- [ ] Decide whether this needs a colleague preview before it circulates. The
+      pages name no organization, so the usual trigger does not apply on its
+      face, but the reach figure is still on it.
 
 Expect nothing for a few days. A new domain with no inbound links usually takes
 somewhere between a few days and a few weeks to appear, even for your own name.
@@ -206,9 +202,9 @@ fonts are cached for a year. There is no CSP header, deliberately: it would
 block either the structured data or Cloudflare's analytics depending on how it
 was written.
 
-**The disclaimer.** The footer now says "does not speak for my employer" rather than
-naming anyone. If you put the employer back on the page, put the name back in the
-disclaimer too.
+**The disclaimer.** The footer says "does not speak for my employer" and names no
+organization. If an organization is ever named on the page, name it in the
+disclaimer too, so the two stay consistent.
 
 **The accent color.** Near the top of `styles.css`, under "Accent, slate register."
 The commented line below holds the gold values. Swap them to move from the civic
@@ -270,6 +266,20 @@ well-behaved crawlers and not others.
 named group ignores the `*` group completely, so a signal written only under `*`
 would never reach GPTBot or ClaudeBot, the crawlers it is aimed at. If you change
 it, change it in every group.
+
+## This file is on the live site
+
+The Pages project has an empty build output directory, which makes the repo root
+the site. Everything here deploys, including this README, at
+`https://yairwalton.com/README.md`, and `tools/` alongside it.
+
+`_headers` marks both `noindex` so they stay out of search results. That stops
+them being findable, not being readable: anyone with the URL can open them.
+
+**So keep this file free of anything you would not put on the site.** No
+colleague names, no internal review notes, no reasoning about what was left off
+the page and why. Operational instructions only. Anything genuinely private
+belongs somewhere that is not this repo.
 
 ## Notes
 

@@ -36,3 +36,13 @@
 /subscribe.html
   Link: </subscribe.md>; rel="alternate"; type="text/markdown"
   Vary: Accept
+
+# The Pages build output is the repo root, so repo files deploy alongside the
+# site. They are not part of it. Keep them out of search results, where they
+# would otherwise be findable under a search for the name.
+/README.md
+  X-Robots-Tag: noindex, nofollow
+  Content-Type: text/markdown; charset=utf-8
+
+/tools/*
+  X-Robots-Tag: noindex, nofollow
